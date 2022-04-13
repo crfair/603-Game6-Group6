@@ -25,7 +25,24 @@ public class PuzzleCanvas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            string output = "";
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++)
+                {
+                    if (savedMap[j, 9 - i] == 1)
+                    {
+                        output += "x";
+                    }
+                    else {
+                        output += "o";
+                    }
+                   
+                }
+                output += "\n";
+            }
+            Debug.Log(output);
+        }
 
     }
 

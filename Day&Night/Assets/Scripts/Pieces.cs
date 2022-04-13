@@ -62,14 +62,26 @@ public class Pieces : MonoBehaviour
     private PuzzleCanvas puzzleCanvas;
     private List<Vector2Int> placedPositions = new List<Vector2Int>();
     private bool allowRotation = true;
+    private Vector2 originalPosition;
+
+
+    private void clearMap() {
+        foreach (Vector2Int position in placedPositions)
+        {
+            puzzleCanvas.ResetSingleBlock(position);
+        }
+        placedPositions.Clear();
+    }
+
     public void piecesClicked() {
-        allowRotation = false;
+        if (!Input.GetMouseButtonDown(0))
+        {
+            return;
+        }
+            allowRotation = false;
         if (!Internals.startMovingPieces)
         {
-            foreach (Vector2Int position in placedPositions) {
-                puzzleCanvas.ResetSingleBlock(position);
-            }
-            placedPositions.Clear();
+            clearMap();
             startMovingPiece = true;
             Internals.startMovingPieces = true;
         }
@@ -93,6 +105,7 @@ public class Pieces : MonoBehaviour
             }
             else {
                 Debug.Log("Not Allowed");
+                
             }
         }
         allowRotation = true;
@@ -101,6 +114,7 @@ public class Pieces : MonoBehaviour
     void Start()
     {
         puzzleCanvas = GameObject.FindGameObjectWithTag("PuzzleCanvasGrid").GetComponent<PuzzleCanvas>();
+        originalPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -118,11 +132,15 @@ public class Pieces : MonoBehaviour
                 transform.position = Input.mousePosition;
             }
 
-            //if (Input.GetMouseButtonDown(0))
-            //{
-            //    Debug.Log(Input.mousePosition);
-            //    Debug.Log(PuzzleCanvasHelper.getGridPosition(Input.mousePosition, Internals.gridDimension));
-            //}
+            if (Input.GetMouseButtonDown(1))
+            {
+                clearMap();
+                transform.position = originalPosition;
+                startMovingPiece = false;
+                Internals.startMovingPieces = false;
+                //Debug.Log(Input.mousePosition);
+                //Debug.Log(PuzzleCanvasHelper.getGridPosition(Input.mousePosition, Internals.gridDimension));
+            }
 
 
             if (Input.GetKeyDown(KeyCode.Space) && allowRotation)
