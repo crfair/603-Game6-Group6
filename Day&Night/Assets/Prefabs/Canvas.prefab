@@ -1,71 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6352332475820503227
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6352332475820503224}
-  - component: {fileID: 6352332475820503225}
-  - component: {fileID: 6352332475820503226}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6352332475820503224
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6352332475820503227}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -959.99994, y: -540, z: 0}
-  m_LocalScale: {x: 1.2371134, y: 1.2371134, z: 1.2371134}
-  m_Children: []
-  m_Father: {fileID: 6352332476016444668}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6352332475820503225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6352332475820503227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!114 &6352332475820503226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6352332475820503227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!1 &6352332475889959931
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,7 +29,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6352332476016444668}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -148,7 +82,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6352332476016444668}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -224,7 +158,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 6352332475820503224}
   - {fileID: 6352332476004777129}
   - {fileID: 6352332476030375734}
   - {fileID: 6352332477562466128}
@@ -354,7 +287,7 @@ RectTransform:
   m_Children:
   - {fileID: 6352332477720068435}
   m_Father: {fileID: 6352332476016444668}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -467,6 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0905f93699549c096f5f787359ed83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzleCanvas: {fileID: 6352332476016444667}
 --- !u!1 &6352332477720068436
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,7 +556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5450478833096717399, guid: 8c4a3c77293754883a2a9bed0488f815, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5450478833096717399, guid: 8c4a3c77293754883a2a9bed0488f815, type: 3}
       propertyPath: m_AnchorMax.x
@@ -696,6 +630,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5450478833096717402, guid: 8c4a3c77293754883a2a9bed0488f815, type: 3}
+      propertyPath: puzzleCanvas
+      value: 
+      objectReference: {fileID: 6352332476016444667}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c4a3c77293754883a2a9bed0488f815, type: 3}
 --- !u!224 &6352332477562466128 stripped
@@ -724,7 +662,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5474812587506685428, guid: e3b60c9f46bc7406699ec14ad3db2ff8, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5474812587506685428, guid: e3b60c9f46bc7406699ec14ad3db2ff8, type: 3}
       propertyPath: m_AnchorMax.x
@@ -798,6 +736,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5474812587506685431, guid: e3b60c9f46bc7406699ec14ad3db2ff8, type: 3}
+      propertyPath: puzzleCanvas
+      value: 
+      objectReference: {fileID: 6352332476016444667}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3b60c9f46bc7406699ec14ad3db2ff8, type: 3}
 --- !u!224 &6352332476030375734 stripped
@@ -812,6 +754,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6352332476016444668}
     m_Modifications:
+    - target: {fileID: 303714000681961226, guid: 4ed3dee493f7c4908b7ffa2c4815c946, type: 3}
+      propertyPath: puzzleCanvas
+      value: 
+      objectReference: {fileID: 6352332476016444667}
     - target: {fileID: 303714000681961229, guid: 4ed3dee493f7c4908b7ffa2c4815c946, type: 3}
       propertyPath: m_Pivot.x
       value: 0.37645355
@@ -822,7 +768,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 303714000681961229, guid: 4ed3dee493f7c4908b7ffa2c4815c946, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 303714000681961229, guid: 4ed3dee493f7c4908b7ffa2c4815c946, type: 3}
       propertyPath: m_AnchorMax.x

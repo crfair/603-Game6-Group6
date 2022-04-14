@@ -5,12 +5,12 @@ using UnityEngine;
 public class CheckButton : MonoBehaviour
 {
 
-    private PuzzleCanvas puzzleCanvas;
+    public PuzzleCanvas puzzleCanvas;
 
     // Start is called before the first frame update
     void Start()
     {
-        puzzleCanvas = GameObject.FindGameObjectWithTag("PuzzleCanvasGrid").GetComponent<PuzzleCanvas>();
+        //puzzleCanvas = GameObject.FindGameObjectWithTag("PuzzleCanvasGrid").GetComponent<PuzzleCanvas>();
 
     }
 
