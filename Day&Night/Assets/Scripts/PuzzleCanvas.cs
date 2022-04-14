@@ -6,9 +6,17 @@ public class PuzzleCanvas : MonoBehaviour
 {
 
     public GameObject testObject;
+    public GameObject specialBlockPrefab;
+    public GameObject placeHolderBlockPrefab;
+    public Vector2Int[] fixedBlockPositions;
+    public Vector2Int[] specialBlockPositions;
+
 
     // Magic Number
     public int[,] savedMap = new int[10, 10];
+
+    private List<GameObject> fixedBlocks = new List<GameObject>();
+    private List<GameObject> specialBlocks = new List<GameObject>();
 
     void setEmptyMap(int row, int column) {
         for (int i = 0; i < row; i++)
@@ -20,6 +28,8 @@ public class PuzzleCanvas : MonoBehaviour
     void Start()
     {
         setEmptyMap(Internals.gridDimension.x, Internals.gridDimension.y);
+        GenerateBlocks(fixedBlockPositions, placeHolderBlockPrefab, fixedBlocks);
+        GenerateBlocks(specialBlockPositions, specialBlockPrefab, specialBlocks);
     }
 
     // Update is called once per frame
@@ -44,6 +54,42 @@ public class PuzzleCanvas : MonoBehaviour
             Debug.Log(output);
         }
 
+        if (Input.GetKeyDown(KeyCode.R)) {
+            if (!Internals.startMovingPieces) {
+                ResetAllPieces();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            List<Vector2Int> exploredBlocks = new List<Vector2Int>();
+            bool result= false;
+            SearchPath(specialBlockPositions[0], specialBlockPositions[specialBlockPositions.Length - 1], savedMap, Internals.gridDimension, exploredBlocks,ref result);
+
+            if (result)
+            {
+                Debug.Log("Found");
+            }
+            else {
+                Debug.Log("Not Found");
+            }
+        }
+    }
+
+
+    public void ValidatePath() {
+        List<Vector2Int> exploredBlocks = new List<Vector2Int>();
+        bool result = false;
+        SearchPath(specialBlockPositions[0], specialBlockPositions[specialBlockPositions.Length - 1], savedMap, Internals.gridDimension, exploredBlocks, ref result);
+
+        if (result)
+        {
+            Debug.Log("Found");
+        }
+        else
+        {
+            Debug.Log("Not Found");
+        }
     }
 
     public bool AllowPlacement(Vector2Int position,Vector2Int gridDimension) {
@@ -62,5 +108,87 @@ public class PuzzleCanvas : MonoBehaviour
     }
     public void ResetSingleBlock(Vector2Int position) {
         savedMap[position.x, position.y] = 0;
+    }
+
+    public void ResetAllPieces() {
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("Pieces");
+        foreach (GameObject obj in objects) {
+            Pieces singlePiece = obj.GetComponent<Pieces>();
+            singlePiece.resetToDefaultPosition();
+        }
+    }
+
+    public void ResetAllBlocks(List<GameObject> storedData)
+    {
+        foreach (GameObject block in storedData)
+        {
+            ResetSingleBlock(block.GetComponent<Blocks>().gridPosition);
+            Destroy(block);
+        }
+        storedData.Clear();
+    }
+
+    public void ResetStartEndBlocks() {
+
+    }
+
+    public void GenerateBlocks(Vector2Int[] positions,GameObject prefab,List<GameObject> storedData) {
+        foreach (Vector2Int position in positions) {
+            Vector2 canvasPosition = PuzzleCanvasHelper.getPositionFromGrid(position);
+            GameObject singleBlock = Instantiate(prefab);
+            singleBlock.transform.position = canvasPosition;
+            singleBlock.transform.SetParent(transform);
+            singleBlock.transform.localScale = new Vector3(1, 1, 1);
+            singleBlock.GetComponent<Blocks>().gridPosition = position;
+            PlaceSingleBlock(position);
+            storedData.Add(singleBlock);
+        }
+    }
+
+    private void AddNeighbor(int[,] map, int x, int y, Vector2Int gridDimension,List<Vector2Int> data, List<Vector2Int> exploredBlocks) {
+        if (x.ifInGrid(gridDimension.x) && y.ifInGrid(gridDimension.y) && !exploredBlocks.Exists(block => block.x == x && block.y == y))
+        {
+            if (map[x, y] == 1) data.Add(new Vector2Int(x, y));
+        }
+    }
+
+    private List<Vector2Int> SearchRectNeighbors(int[,] map, Vector2Int position, Vector2Int gridDimension, List<Vector2Int> exploredBlocks) {
+        List<Vector2Int> output = new List<Vector2Int>();
+
+        //if (!position.x.ifInGrid(gridDimension.x) || !position.y.ifInGrid(gridDimension.y)) {
+        //    return output;
+        //}
+        AddNeighbor(map, position.x - 1, position.y, gridDimension, output, exploredBlocks);
+        AddNeighbor(map, position.x + 1, position.y, gridDimension, output, exploredBlocks);
+        AddNeighbor(map, position.x, position.y + 1, gridDimension, output, exploredBlocks);
+        AddNeighbor(map, position.x, position.y - 1, gridDimension, output, exploredBlocks);
+        return output;
+    }
+
+    public void SearchPath(Vector2Int start, Vector2Int end, int[,] map, Vector2Int gridDimension,List<Vector2Int> exploredBlocks, ref bool result) {
+
+        exploredBlocks.Add(start);
+
+        //Vector2 canvasPosition = PuzzleCanvasHelper.getPositionFromGrid(start);
+        //GameObject singleBlock = Instantiate(testObject);
+        //singleBlock.transform.position = canvasPosition;
+        //singleBlock.transform.SetParent(transform);
+        //singleBlock.transform.localScale = new Vector3(1, 1, 1);
+
+        List<Vector2Int> neighbors = SearchRectNeighbors(map, start, gridDimension, exploredBlocks);
+        foreach (Vector2Int position in neighbors) {
+            //Debug.Log(position);
+            if (position == end)
+            {
+                result = true;
+                //Debug.Log("HERE");
+                return;
+                //return true;
+            }
+            else{
+                SearchPath(position, end, map, gridDimension, exploredBlocks,ref result);
+            }
+        }
+        //return false;
     }
 }
