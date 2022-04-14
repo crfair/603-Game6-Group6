@@ -168,7 +168,6 @@ public class PuzzleCanvas : MonoBehaviour
     public bool SearchPath(Vector2Int start, Vector2Int end, int[,] map, Vector2Int gridDimension,List<Vector2Int> exploredBlocks) {
 
         exploredBlocks.Add(start);
-
         //Vector2 canvasPosition = PuzzleCanvasHelper.getPositionFromGrid(start);
         //GameObject singleBlock = Instantiate(testObject);
         //singleBlock.transform.position = canvasPosition;
@@ -176,7 +175,6 @@ public class PuzzleCanvas : MonoBehaviour
         //singleBlock.transform.localScale = new Vector3(1, 1, 1);
 
         List<Vector2Int> neighbors = SearchRectNeighbors(map, start, gridDimension, exploredBlocks);
-
         bool result = false;
         foreach (Vector2Int position in neighbors) {
             if (position == end)
