@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - PuzzleCanvasGrid
+  - Pieces
+  - Blocks
   layers:
   - Default
   - TransparentFX
