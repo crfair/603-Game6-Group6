@@ -136,8 +136,8 @@ public class PuzzleCanvas : MonoBehaviour
         foreach (Vector2Int position in positions) {
             Vector2 canvasPosition = PuzzleCanvasHelper.getPositionFromGrid(position);
             GameObject singleBlock = Instantiate(prefab);
-            singleBlock.transform.position = canvasPosition;
             singleBlock.transform.SetParent(transform);
+            singleBlock.transform.position = canvasPosition;
             singleBlock.transform.localScale = new Vector3(1, 1, 1);
             singleBlock.GetComponent<Blocks>().gridPosition = position;
             PlaceSingleBlock(position);
