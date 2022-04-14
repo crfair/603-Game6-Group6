@@ -26,11 +26,11 @@ public class PuzzleCanvasHelper : MonoBehaviour
 
     public static Vector2Int getGridPosition(Vector2 mousePosition,Vector2Int gridSize)
     {
-        float scaler = Screen.width / Internals.standardCanvasSize.x;
-        //Debug.Log(scaler);
-        // 256,216
-        int x = (int)((mousePosition.x - Internals.gridInitPosition.x * scaler) / Internals.singleGridSize / scaler);
-        int y = (int)((mousePosition.y - Internals.gridInitPosition.y * scaler) / Internals.singleGridSize / scaler);
+        float scalerX = Screen.width / Internals.standardCanvasSize.x;
+        float scalerY = Screen.height / Internals.standardCanvasSize.y;
+
+        int x = (int)((mousePosition.x - Internals.gridInitPosition.x * scalerX) / Internals.singleGridSize / scalerX);
+        int y = (int)((mousePosition.y - Internals.gridInitPosition.y * scalerX) / Internals.singleGridSize / scalerX);
         if (x >= 0 && x < gridSize.x && y >= 0 && y < gridSize.y)
         {
             return new Vector2Int(x, y);
@@ -41,9 +41,11 @@ public class PuzzleCanvasHelper : MonoBehaviour
     }
 
     public static Vector2 getPositionFromGrid(Vector2Int gridPostion) {
-        float scaler = Screen.width / Internals.standardCanvasSize.x;
-        float x = (Internals.gridInitPosition.x + (gridPostion.x + 0.5f) * Internals.singleGridSize) * scaler;
-        float y = (Internals.gridInitPosition.y + (gridPostion.y + 0.5f) * Internals.singleGridSize) * scaler;
+        float scalerX = Screen.width / Internals.standardCanvasSize.x;
+        float scalerY = Screen.height / Internals.standardCanvasSize.y;
+
+        float x = (Internals.gridInitPosition.x + (gridPostion.x + 0.5f) * Internals.singleGridSize) * scalerX;
+        float y = (Internals.gridInitPosition.y + (gridPostion.y + 0.5f) * Internals.singleGridSize) * scalerX;
         return new Vector2(x, y);
     }
 }
