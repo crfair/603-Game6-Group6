@@ -20,6 +20,7 @@ public enum PiecesTypes {
 
 static class Extension
 {
+    
     public static T Next<T>(this T option) where T : struct, Enum
     {
         int newValue = (int)(object)option + 1;
@@ -47,6 +48,10 @@ static class Extension
         }
         return output;
     }
+
+    public static bool ifInGrid(this int num, int gridSize) {
+        return num >= 0 && num < gridSize;
+    }
 }
 
 
@@ -72,6 +77,13 @@ public class Pieces : MonoBehaviour
         }
         placedPositions.Clear();
     }
+
+
+    public void resetToDefaultPosition() {
+        clearMap();
+        transform.position = originalPosition;
+    }
+
 
     public void piecesClicked() {
         if (!Input.GetMouseButtonDown(0))
@@ -134,8 +146,8 @@ public class Pieces : MonoBehaviour
 
             if (Input.GetMouseButtonDown(1))
             {
-                clearMap();
-                transform.position = originalPosition;
+                
+                resetToDefaultPosition();
                 startMovingPiece = false;
                 Internals.startMovingPieces = false;
                 //Debug.Log(Input.mousePosition);
