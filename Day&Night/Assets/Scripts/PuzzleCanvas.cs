@@ -60,7 +60,7 @@ public class PuzzleCanvas : MonoBehaviour
 
 
     /// <summary>
-    /// Validate if there is a path from the first special point to the last one.
+    /// Validate if there is a path between any of the special points.
     /// </summary>
     public bool ValidatePath() {
         bool result = true;
