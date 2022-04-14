@@ -61,14 +61,18 @@ public class PuzzleCanvas : MonoBehaviour
 
     /// <summary>
     /// Validate if there is a path from the first special point to the last one.
-    /// Note that the special points  in the list between the first one and the last one is not checked.
     /// </summary>
-    public void ValidatePath() {
-        // Create an empty list for saving the explored blocks. This is needed for the recursive method working.
-        List<Vector2Int> exploredBlocks = new List<Vector2Int>();
+    public bool ValidatePath() {
+        bool result = true;
+        for (int i = 0; i < specialBlockPositions.Length - 1; i++) {
+            for (int j = i + 1; j < specialBlockPositions.Length; j++) {
+                // Create an empty list for saving the explored blocks. This is needed for the recursive method working.
+                List<Vector2Int> exploredBlocks = new List<Vector2Int>();
+                // Check if there is a path
+                result = result && SearchPath(specialBlockPositions[i], specialBlockPositions[j], savedMap, Internals.gridDimension, exploredBlocks);
+            }
+        }
 
-        // Check if there is a path
-        bool result = SearchPath(specialBlockPositions[0], specialBlockPositions[specialBlockPositions.Length - 1], savedMap, Internals.gridDimension, exploredBlocks);
 
         if (result)
         {
@@ -78,6 +82,7 @@ public class PuzzleCanvas : MonoBehaviour
         {
             Debug.Log("Not Found");
         }
+        return result;
     }
 
     /// <summary>
