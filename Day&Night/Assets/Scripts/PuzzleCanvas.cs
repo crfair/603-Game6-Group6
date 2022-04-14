@@ -154,10 +154,10 @@ public class PuzzleCanvas : MonoBehaviour
 
     private List<Vector2Int> SearchRectNeighbors(int[,] map, Vector2Int position, Vector2Int gridDimension, List<Vector2Int> exploredBlocks) {
         List<Vector2Int> output = new List<Vector2Int>();
-
-        //if (!position.x.ifInGrid(gridDimension.x) || !position.y.ifInGrid(gridDimension.y)) {
-        //    return output;
-        //}
+        if (!position.x.ifInGrid(gridDimension.x) || !position.y.ifInGrid(gridDimension.y))
+        {
+            return output;
+        }
         AddNeighbor(map, position.x - 1, position.y, gridDimension, output, exploredBlocks);
         AddNeighbor(map, position.x + 1, position.y, gridDimension, output, exploredBlocks);
         AddNeighbor(map, position.x, position.y + 1, gridDimension, output, exploredBlocks);
@@ -169,11 +169,11 @@ public class PuzzleCanvas : MonoBehaviour
 
         exploredBlocks.Add(start);
 
-        Vector2 canvasPosition = PuzzleCanvasHelper.getPositionFromGrid(start);
-        GameObject singleBlock = Instantiate(testObject);
-        singleBlock.transform.position = canvasPosition;
-        singleBlock.transform.SetParent(transform);
-        singleBlock.transform.localScale = new Vector3(1, 1, 1);
+        //Vector2 canvasPosition = PuzzleCanvasHelper.getPositionFromGrid(start);
+        //GameObject singleBlock = Instantiate(testObject);
+        //singleBlock.transform.position = canvasPosition;
+        //singleBlock.transform.SetParent(transform);
+        //singleBlock.transform.localScale = new Vector3(1, 1, 1);
 
         List<Vector2Int> neighbors = SearchRectNeighbors(map, start, gridDimension, exploredBlocks);
 
