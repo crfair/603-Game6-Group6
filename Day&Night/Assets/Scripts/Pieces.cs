@@ -64,7 +64,7 @@ public class Pieces : MonoBehaviour
 
 
     private bool startMovingPiece = false;
-    private PuzzleCanvas puzzleCanvas;
+    public PuzzleCanvas puzzleCanvas;
     private List<Vector2Int> placedPositions = new List<Vector2Int>();
     private bool allowRotation = true;
     private Vector2 originalPosition;
@@ -125,7 +125,7 @@ public class Pieces : MonoBehaviour
 
     void Start()
     {
-        puzzleCanvas = GameObject.FindGameObjectWithTag("PuzzleCanvasGrid").GetComponent<PuzzleCanvas>();
+        //puzzleCanvas = GameObject.FindGameObjectWithTag("PuzzleCanvasGrid").GetComponent<PuzzleCanvas>();
         originalPosition = transform.position;
     }
 

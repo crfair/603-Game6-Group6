@@ -400,6 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e0905f93699549c096f5f787359ed83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  puzzleCanvas: {fileID: 6352332476016444667}
 --- !u!1 &6352332477720068436
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,6 +630,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5450478833096717402, guid: 8c4a3c77293754883a2a9bed0488f815, type: 3}
+      propertyPath: puzzleCanvas
+      value: 
+      objectReference: {fileID: 6352332476016444667}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c4a3c77293754883a2a9bed0488f815, type: 3}
 --- !u!224 &6352332477562466128 stripped
@@ -731,6 +736,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5474812587506685431, guid: e3b60c9f46bc7406699ec14ad3db2ff8, type: 3}
+      propertyPath: puzzleCanvas
+      value: 
+      objectReference: {fileID: 6352332476016444667}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3b60c9f46bc7406699ec14ad3db2ff8, type: 3}
 --- !u!224 &6352332476030375734 stripped
@@ -745,6 +754,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6352332476016444668}
     m_Modifications:
+    - target: {fileID: 303714000681961226, guid: 4ed3dee493f7c4908b7ffa2c4815c946, type: 3}
+      propertyPath: puzzleCanvas
+      value: 
+      objectReference: {fileID: 6352332476016444667}
     - target: {fileID: 303714000681961229, guid: 4ed3dee493f7c4908b7ffa2c4815c946, type: 3}
       propertyPath: m_Pivot.x
       value: 0.37645355

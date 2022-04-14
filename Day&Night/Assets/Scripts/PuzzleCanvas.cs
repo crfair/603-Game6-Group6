@@ -56,26 +56,26 @@ public class PuzzleCanvas : MonoBehaviour
             Debug.Log(output);
         }
 
-        if (Input.GetKeyDown(KeyCode.R)) {
-            if (!Internals.startMovingPieces) {
-                ResetAllPieces();
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.R)) {
+        //    if (!Internals.startMovingPieces) {
+        //        ResetAllPieces();
+        //    }
+        //}
 
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            List<Vector2Int> exploredBlocks = new List<Vector2Int>();
-            //bool result= false;
-            bool result = SearchPath(specialBlockPositions[0], specialBlockPositions[specialBlockPositions.Length - 1], savedMap, Internals.gridDimension, exploredBlocks);
+        //if (Input.GetKeyDown(KeyCode.T))
+        //{
+        //    List<Vector2Int> exploredBlocks = new List<Vector2Int>();
+        //    //bool result= false;
+        //    bool result = SearchPath(specialBlockPositions[0], specialBlockPositions[specialBlockPositions.Length - 1], savedMap, Internals.gridDimension, exploredBlocks);
 
-            if (result)
-            {
-                Debug.Log("Found");
-            }
-            else {
-                Debug.Log("Not Found");
-            }
-        }
+        //    if (result)
+        //    {
+        //        Debug.Log("Found");
+        //    }
+        //    else {
+        //        Debug.Log("Not Found");
+        //    }
+        //}
     }
 
 
@@ -115,13 +115,13 @@ public class PuzzleCanvas : MonoBehaviour
         savedMap[position.x, position.y] = 0;
     }
 
-    public void ResetAllPieces() {
-        GameObject[] objects = GameObject.FindGameObjectsWithTag("Pieces");
-        foreach (GameObject obj in objects) {
-            Pieces singlePiece = obj.GetComponent<Pieces>();
-            singlePiece.resetToDefaultPosition();
-        }
-    }
+    //public void ResetAllPieces() {
+    //    GameObject[] objects = GameObject.FindGameObjectsWithTag("Pieces");
+    //    foreach (GameObject obj in objects) {
+    //        Pieces singlePiece = obj.GetComponent<Pieces>();
+    //        singlePiece.resetToDefaultPosition();
+    //    }
+    //}
 
     public void ResetAllBlocks(List<GameObject> storedData)
     {
