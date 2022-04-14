@@ -2137,6 +2137,14 @@ PrefabInstance:
       propertyPath: intro
       value: 
       objectReference: {fileID: 340581363}
+    - target: {fileID: 519420030, guid: e4b67a8865f8b454a9854ef63f01b74e, type: 3}
+      propertyPath: m_RefResolutionX
+      value: 426
+      objectReference: {fileID: 0}
+    - target: {fileID: 519420030, guid: e4b67a8865f8b454a9854ef63f01b74e, type: 3}
+      propertyPath: m_RefResolutionY
+      value: 240
+      objectReference: {fileID: 0}
     - target: {fileID: 912734893613221044, guid: e4b67a8865f8b454a9854ef63f01b74e, type: 3}
       propertyPath: m_Name
       value: PlayerCharacter
