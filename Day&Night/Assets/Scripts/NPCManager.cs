@@ -9,12 +9,14 @@ public class NPCManager : MonoBehaviour
     private NPCConversation dialogue;
 
     private bool playerNearby;
+    private PlayerController playerMovement;
 
     private void Start()
     {
         text = GetComponentInChildren<Text>();
         text.enabled = false;
         playerNearby = false;
+        playerMovement = GameObject.Find("PlayerCharacter").GetComponent<PlayerController>();
     }
 
     private void Update()
@@ -22,7 +24,17 @@ public class NPCManager : MonoBehaviour
         if (playerNearby && Input.GetKeyDown(KeyCode.E))
         {
             ConversationManager.Instance.StartConversation(dialogue);
+            ConversationManager.OnConversationEnded += DialogueEnded;
+            playerMovement.enabled = false;
         }
+    }
+
+    private void DialogueEnded()
+    {
+        playerMovement.enabled = true;
+        ConversationManager.OnConversationEnded -= DialogueEnded;
+        gameObject.transform.Find("Canvas").gameObject.SetActive(false);
+        enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -38,5 +50,10 @@ public class NPCManager : MonoBehaviour
     {
         text.enabled = false;
         playerNearby = false;
+    }
+
+    public void SetColor(bool color)
+    {
+        gameObject.GetComponent<Animator>().SetBool("PuzzleComplete", color);
     }
 }
