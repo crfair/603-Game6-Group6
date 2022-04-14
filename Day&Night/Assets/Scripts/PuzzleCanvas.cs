@@ -8,8 +8,8 @@ public class PuzzleCanvas : MonoBehaviour
     public GameObject testObject;
     public GameObject specialBlockPrefab;
     public GameObject placeHolderBlockPrefab;
-    //public GameObject puzzle1Canvas;
-    //public GameObject puzzle2Canvas;
+    public GameObject puzzle1Canvas;
+    public GameObject puzzle2Canvas;
     public Vector2Int[] fixedBlockPositions;
     public Vector2Int[] specialBlockPositions;
 
@@ -32,6 +32,7 @@ public class PuzzleCanvas : MonoBehaviour
         setEmptyMap(Internals.gridDimension.x, Internals.gridDimension.y);
         GenerateBlocks(fixedBlockPositions, placeHolderBlockPrefab, fixedBlocks);
         GenerateBlocks(specialBlockPositions, specialBlockPrefab, specialBlocks);
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -56,26 +57,26 @@ public class PuzzleCanvas : MonoBehaviour
             Debug.Log(output);
         }
 
-        if (Input.GetKeyDown(KeyCode.R)) {
-            if (!Internals.startMovingPieces) {
-                ResetAllPieces();
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.R)) {
+        //    if (!Internals.startMovingPieces) {
+        //        ResetAllPieces();
+        //    }
+        //}
 
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            List<Vector2Int> exploredBlocks = new List<Vector2Int>();
-            //bool result= false;
-            bool result = SearchPath(specialBlockPositions[0], specialBlockPositions[specialBlockPositions.Length - 1], savedMap, Internals.gridDimension, exploredBlocks);
+        //if (Input.GetKeyDown(KeyCode.T))
+        //{
+        //    List<Vector2Int> exploredBlocks = new List<Vector2Int>();
+        //    //bool result= false;
+        //    bool result = SearchPath(specialBlockPositions[0], specialBlockPositions[specialBlockPositions.Length - 1], savedMap, Internals.gridDimension, exploredBlocks);
 
-            if (result)
-            {
-                Debug.Log("Found");
-            }
-            else {
-                Debug.Log("Not Found");
-            }
-        }
+        //    if (result)
+        //    {
+        //        Debug.Log("Found");
+        //    }
+        //    else {
+        //        Debug.Log("Not Found");
+        //    }
+        //}
     }
 
 
@@ -89,6 +90,12 @@ public class PuzzleCanvas : MonoBehaviour
             Debug.Log("Found");
             //puzzle1Canvas.gameObject.SetActive(false);
             //puzzle2Canvas.gameObject.SetActive(true);
+            //gameObject.SetActive(false);
+
+            if (gameObject == puzzle1Canvas)
+            {
+                puzzle2Canvas.SetActive(true);
+            }
             gameObject.SetActive(false);
         }
         else
@@ -115,13 +122,13 @@ public class PuzzleCanvas : MonoBehaviour
         savedMap[position.x, position.y] = 0;
     }
 
-    public void ResetAllPieces() {
-        GameObject[] objects = GameObject.FindGameObjectsWithTag("Pieces");
-        foreach (GameObject obj in objects) {
-            Pieces singlePiece = obj.GetComponent<Pieces>();
-            singlePiece.resetToDefaultPosition();
-        }
-    }
+    //public void ResetAllPieces() {
+    //    GameObject[] objects = GameObject.FindGameObjectsWithTag("Pieces");
+    //    foreach (GameObject obj in objects) {
+    //        Pieces singlePiece = obj.GetComponent<Pieces>();
+    //        singlePiece.resetToDefaultPosition();
+    //    }
+    //}
 
     public void ResetAllBlocks(List<GameObject> storedData)
     {
@@ -173,7 +180,6 @@ public class PuzzleCanvas : MonoBehaviour
     public bool SearchPath(Vector2Int start, Vector2Int end, int[,] map, Vector2Int gridDimension,List<Vector2Int> exploredBlocks) {
 
         exploredBlocks.Add(start);
-
         //Vector2 canvasPosition = PuzzleCanvasHelper.getPositionFromGrid(start);
         //GameObject singleBlock = Instantiate(testObject);
         //singleBlock.transform.position = canvasPosition;
@@ -181,7 +187,6 @@ public class PuzzleCanvas : MonoBehaviour
         //singleBlock.transform.localScale = new Vector3(1, 1, 1);
 
         List<Vector2Int> neighbors = SearchRectNeighbors(map, start, gridDimension, exploredBlocks);
-
         bool result = false;
         foreach (Vector2Int position in neighbors) {
             if (position == end)
