@@ -65,8 +65,8 @@ public class PuzzleCanvas : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             List<Vector2Int> exploredBlocks = new List<Vector2Int>();
-            bool result= false;
-            SearchPath(specialBlockPositions[0], specialBlockPositions[specialBlockPositions.Length - 1], savedMap, Internals.gridDimension, exploredBlocks,ref result);
+            //bool result= false;
+            bool result = SearchPath(specialBlockPositions[0], specialBlockPositions[specialBlockPositions.Length - 1], savedMap, Internals.gridDimension, exploredBlocks);
 
             if (result)
             {
@@ -81,8 +81,8 @@ public class PuzzleCanvas : MonoBehaviour
 
     public void ValidatePath() {
         List<Vector2Int> exploredBlocks = new List<Vector2Int>();
-        bool result = false;
-        SearchPath(specialBlockPositions[0], specialBlockPositions[specialBlockPositions.Length - 1], savedMap, Internals.gridDimension, exploredBlocks, ref result);
+        //bool result = false;
+        bool result = SearchPath(specialBlockPositions[0], specialBlockPositions[specialBlockPositions.Length - 1], savedMap, Internals.gridDimension, exploredBlocks);
 
         if (result)
         {
@@ -158,10 +158,10 @@ public class PuzzleCanvas : MonoBehaviour
 
     private List<Vector2Int> SearchRectNeighbors(int[,] map, Vector2Int position, Vector2Int gridDimension, List<Vector2Int> exploredBlocks) {
         List<Vector2Int> output = new List<Vector2Int>();
-
-        //if (!position.x.ifInGrid(gridDimension.x) || !position.y.ifInGrid(gridDimension.y)) {
-        //    return output;
-        //}
+        if (!position.x.ifInGrid(gridDimension.x) || !position.y.ifInGrid(gridDimension.y))
+        {
+            return output;
+        }
         AddNeighbor(map, position.x - 1, position.y, gridDimension, output, exploredBlocks);
         AddNeighbor(map, position.x + 1, position.y, gridDimension, output, exploredBlocks);
         AddNeighbor(map, position.x, position.y + 1, gridDimension, output, exploredBlocks);
@@ -169,7 +169,7 @@ public class PuzzleCanvas : MonoBehaviour
         return output;
     }
 
-    public void SearchPath(Vector2Int start, Vector2Int end, int[,] map, Vector2Int gridDimension,List<Vector2Int> exploredBlocks, ref bool result) {
+    public bool SearchPath(Vector2Int start, Vector2Int end, int[,] map, Vector2Int gridDimension,List<Vector2Int> exploredBlocks) {
 
         exploredBlocks.Add(start);
 
@@ -180,19 +180,17 @@ public class PuzzleCanvas : MonoBehaviour
         //singleBlock.transform.localScale = new Vector3(1, 1, 1);
 
         List<Vector2Int> neighbors = SearchRectNeighbors(map, start, gridDimension, exploredBlocks);
+
+        bool result = false;
         foreach (Vector2Int position in neighbors) {
-            //Debug.Log(position);
             if (position == end)
             {
-                result = true;
-                //Debug.Log("HERE");
-                return;
-                //return true;
+                return true;
             }
             else{
-                SearchPath(position, end, map, gridDimension, exploredBlocks,ref result);
+                result = result || SearchPath(position, end, map, gridDimension, exploredBlocks);
             }
         }
-        //return false;
+        return result;
     }
 }
