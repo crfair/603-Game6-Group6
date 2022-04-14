@@ -8,8 +8,8 @@ public class PuzzleCanvas : MonoBehaviour
     public GameObject testObject;
     public GameObject specialBlockPrefab;
     public GameObject placeHolderBlockPrefab;
-    public GameObject puzzle1Canvas;
-    public GameObject puzzle2Canvas;
+    //public GameObject puzzle1Canvas;
+    //public GameObject puzzle2Canvas;
     public Vector2Int[] fixedBlockPositions;
     public Vector2Int[] specialBlockPositions;
 
@@ -87,8 +87,9 @@ public class PuzzleCanvas : MonoBehaviour
         if (result)
         {
             Debug.Log("Found");
-            puzzle1Canvas.gameObject.SetActive(false);
-            puzzle2Canvas.gameObject.SetActive(true);
+            //puzzle1Canvas.gameObject.SetActive(false);
+            //puzzle2Canvas.gameObject.SetActive(true);
+            gameObject.SetActive(false);
         }
         else
         {
