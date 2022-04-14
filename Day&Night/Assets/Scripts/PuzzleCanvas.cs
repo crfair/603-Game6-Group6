@@ -63,8 +63,8 @@ public class PuzzleCanvas : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             List<Vector2Int> exploredBlocks = new List<Vector2Int>();
-            bool result= false;
-            SearchPath(specialBlockPositions[0], specialBlockPositions[specialBlockPositions.Length - 1], savedMap, Internals.gridDimension, exploredBlocks,ref result);
+            //bool result= false;
+            bool result = SearchPath(specialBlockPositions[0], specialBlockPositions[specialBlockPositions.Length - 1], savedMap, Internals.gridDimension, exploredBlocks);
 
             if (result)
             {
@@ -79,8 +79,8 @@ public class PuzzleCanvas : MonoBehaviour
 
     public void ValidatePath() {
         List<Vector2Int> exploredBlocks = new List<Vector2Int>();
-        bool result = false;
-        SearchPath(specialBlockPositions[0], specialBlockPositions[specialBlockPositions.Length - 1], savedMap, Internals.gridDimension, exploredBlocks, ref result);
+        //bool result = false;
+        bool result = SearchPath(specialBlockPositions[0], specialBlockPositions[specialBlockPositions.Length - 1], savedMap, Internals.gridDimension, exploredBlocks);
 
         if (result)
         {
@@ -165,30 +165,28 @@ public class PuzzleCanvas : MonoBehaviour
         return output;
     }
 
-    public void SearchPath(Vector2Int start, Vector2Int end, int[,] map, Vector2Int gridDimension,List<Vector2Int> exploredBlocks, ref bool result) {
+    public bool SearchPath(Vector2Int start, Vector2Int end, int[,] map, Vector2Int gridDimension,List<Vector2Int> exploredBlocks) {
 
         exploredBlocks.Add(start);
 
-        //Vector2 canvasPosition = PuzzleCanvasHelper.getPositionFromGrid(start);
-        //GameObject singleBlock = Instantiate(testObject);
-        //singleBlock.transform.position = canvasPosition;
-        //singleBlock.transform.SetParent(transform);
-        //singleBlock.transform.localScale = new Vector3(1, 1, 1);
+        Vector2 canvasPosition = PuzzleCanvasHelper.getPositionFromGrid(start);
+        GameObject singleBlock = Instantiate(testObject);
+        singleBlock.transform.position = canvasPosition;
+        singleBlock.transform.SetParent(transform);
+        singleBlock.transform.localScale = new Vector3(1, 1, 1);
 
         List<Vector2Int> neighbors = SearchRectNeighbors(map, start, gridDimension, exploredBlocks);
+
+        bool result = false;
         foreach (Vector2Int position in neighbors) {
-            //Debug.Log(position);
             if (position == end)
             {
-                result = true;
-                //Debug.Log("HERE");
-                return;
-                //return true;
+                return true;
             }
             else{
-                SearchPath(position, end, map, gridDimension, exploredBlocks,ref result);
+                result = result || SearchPath(position, end, map, gridDimension, exploredBlocks);
             }
         }
-        //return false;
+        return result;
     }
 }
