@@ -33,7 +33,7 @@ public class PuzzleCanvas : MonoBehaviour
         setEmptyMap(Internals.gridDimension.x, Internals.gridDimension.y);
         GenerateBlocks(fixedBlockPositions, placeHolderBlockPrefab, fixedBlocks);
         GenerateBlocks(specialBlockPositions, specialBlockPrefab, specialBlocks);
-        gameObject.SetActive(false);
+        // gameObject.SetActive(false);
     }
 
     // Update is called once per frame
