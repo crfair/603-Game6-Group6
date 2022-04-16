@@ -26,6 +26,7 @@ public class NPCManager : MonoBehaviour
             ConversationManager.Instance.StartConversation(dialogue);
             ConversationManager.OnConversationEnded += DialogueEnded;
             playerMovement.enabled = false;
+            playerNearby = false;
         }
     }
 
