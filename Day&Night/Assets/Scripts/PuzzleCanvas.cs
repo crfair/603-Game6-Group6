@@ -77,6 +77,7 @@ public class PuzzleCanvas : MonoBehaviour
 
         if (result)
         {
+            Delegate?.PuzzleCanvasDidPassVerification();
             Debug.Log("Found");
         }
         else
