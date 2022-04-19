@@ -1565,6 +1565,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6352332476016444667, guid: 0d6a4f61d8aff4d77b29601bc89367fa, type: 3}
+      propertyPath: puzzleTitle
+      value: Puzzle2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6352332476016444667, guid: 0d6a4f61d8aff4d77b29601bc89367fa, type: 3}
       propertyPath: puzzle1Canvas
       value: 
       objectReference: {fileID: 1483514060}
@@ -2115,6 +2119,10 @@ PrefabInstance:
     - target: {fileID: 6352332476016444656, guid: 0d6a4f61d8aff4d77b29601bc89367fa, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6352332476016444667, guid: 0d6a4f61d8aff4d77b29601bc89367fa, type: 3}
+      propertyPath: puzzleTitle
+      value: Puzzle1
       objectReference: {fileID: 0}
     - target: {fileID: 6352332476016444667, guid: 0d6a4f61d8aff4d77b29601bc89367fa, type: 3}
       propertyPath: puzzle1Canvas
