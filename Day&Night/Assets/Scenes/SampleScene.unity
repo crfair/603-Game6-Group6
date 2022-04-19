@@ -1890,6 +1890,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2689732993155367387, guid: e4e658b681d79471892aa5d186f45bd7, type: 3}
+      propertyPath: singleGridSize
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689732993155367387, guid: e4e658b681d79471892aa5d186f45bd7, type: 3}
+      propertyPath: gridDimension.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689732993155367387, guid: e4e658b681d79471892aa5d186f45bd7, type: 3}
+      propertyPath: gridDimension.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689732993155367387, guid: e4e658b681d79471892aa5d186f45bd7, type: 3}
+      propertyPath: gridInitPosition.x
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689732993155367387, guid: e4e658b681d79471892aa5d186f45bd7, type: 3}
+      propertyPath: gridInitPosition.y
+      value: 216
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689732993155367387, guid: e4e658b681d79471892aa5d186f45bd7, type: 3}
+      propertyPath: standardCanvasSize.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 2689732993155367387, guid: e4e658b681d79471892aa5d186f45bd7, type: 3}
+      propertyPath: standardCanvasSize.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 2689732993155367390, guid: e4e658b681d79471892aa5d186f45bd7, type: 3}
       propertyPath: m_Name
       value: Pause
