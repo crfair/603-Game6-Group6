@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.IO;
 
 public class PuzzleCanvas : MonoBehaviour
 {
@@ -12,12 +14,56 @@ public class PuzzleCanvas : MonoBehaviour
     public Vector2Int[] specialBlockPositions;
 
     public PuzzleCanvasDelegate Delegate;
+    public string puzzleTitle = "Untitled";
 
     // Magic Number
     public int[,] savedMap = new int[10, 10];
 
     private List<GameObject> fixedBlocks = new List<GameObject>();
     private List<GameObject> specialBlocks = new List<GameObject>();
+
+
+    private DateTime puzzleStartDateTime = DateTime.Now;
+
+    public void StartPuzzleTimer() {
+        puzzleStartDateTime = DateTime.Now;
+    }
+
+    private string GenerateMapString() {
+        string output = "";
+        for (int i = 0; i < 10; i++)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                if (savedMap[j, 9 - i] == 1)
+                {
+                    output += "x";
+                }
+                else
+                {
+                    output += "o";
+                }
+
+            }
+            output += "\n";
+        }
+        return output;
+    }
+
+    private void WriteStatisticData() {
+        double seconds = DateTime.Now.Subtract(puzzleStartDateTime).TotalSeconds;
+        string text =@$"
+{{
+  ""puzzleTitle"":""{puzzleTitle}"",
+  ""timeSpentInSeconds"":""{seconds}"",
+  ""puzzleMap"":""
+{GenerateMapString()}""
+}}";
+        DateTime dt = DateTime.Now;
+        long unixTime = ((DateTimeOffset)dt).ToUnixTimeSeconds();
+        Debug.Log(Application.dataPath);
+        File.WriteAllText(Application.dataPath + $"/{puzzleTitle}.{unixTime}.json", text);
+    }
 
     // Clear the map
     void setEmptyMap(int row, int column) {
@@ -77,6 +123,7 @@ public class PuzzleCanvas : MonoBehaviour
 
         if (result)
         {
+            WriteStatisticData();
             Delegate?.PuzzleCanvasDidPassVerification();
             Debug.Log("Found");
         }
