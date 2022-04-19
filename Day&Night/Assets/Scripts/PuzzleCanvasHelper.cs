@@ -61,8 +61,8 @@ public class PuzzleCanvasHelper : MonoBehaviour
     /// <returns></returns>
     public static Vector2 getPositionFromGrid(Vector2Int gridPostion) {
 
-        Debug.Log(Screen.width);
-        Debug.Log(Internals.standardCanvasSize.x);
+        //Debug.Log(Screen.width);
+        //Debug.Log(Internals.standardCanvasSize.x);
 
         // Get the scaler to scale properly according to the current resolution
         float scalerX = Screen.width / Internals.standardCanvasSize.x;
