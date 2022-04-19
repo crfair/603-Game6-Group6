@@ -11,6 +11,7 @@ public class PuzzleCanvas : MonoBehaviour
     public Vector2Int[] fixedBlockPositions;
     public Vector2Int[] specialBlockPositions;
 
+    public PuzzleCanvasDelegate Delegate;
 
     // Magic Number
     public int[,] savedMap = new int[10, 10];
