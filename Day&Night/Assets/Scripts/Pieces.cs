@@ -172,6 +172,7 @@ public class Pieces : MonoBehaviour
     {
         //puzzleCanvas = GameObject.FindGameObjectWithTag("PuzzleCanvasGrid").GetComponent<PuzzleCanvas>();
         originalPosition = transform.position;
+        //puzzleCanvas.Delegate = this;
     }
 
     // Update is called once per frame
@@ -218,4 +219,9 @@ public class Pieces : MonoBehaviour
     Vector2Int getBlockPosition(RotationStatus rotationStatus, int index) {
         return piecesBlocks[(int)rotationStatus * pieces + index];
     }
+
+    //public void PuzzleCanvasDidPassVerification()
+    //{
+    //    throw new NotImplementedException();
+    //}
 }
