@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class PuzzleCanvasHelper : MonoBehaviour
 {
-    public Vector2Int gridDimension; 
-    public Vector2 gridInitPosition;
-    public Vector2 standardCanvasSize;
-    public float singleGridSize;
+    //public Vector2Int gridDimension; 
+    //public Vector2 gridInitPosition;
+    //public Vector2 standardCanvasSize;
+    //public float singleGridSize;
 
     // Start is called before the first frame update
     void Start()
     {
-        Internals.gridDimension = gridDimension;
-        Internals.gridInitPosition = gridInitPosition;
-        Internals.standardCanvasSize = standardCanvasSize;
-        Internals.singleGridSize = singleGridSize;
+        //Internals.gridDimension = gridDimension;
+        //Internals.gridInitPosition = gridInitPosition;
+        //Internals.standardCanvasSize = standardCanvasSize;
+        //Internals.singleGridSize = singleGridSize;
     }
 
     // Update is called once per frame
@@ -60,6 +60,9 @@ public class PuzzleCanvasHelper : MonoBehaviour
     /// <param name="gridPostion">The position in the grid system</param>
     /// <returns></returns>
     public static Vector2 getPositionFromGrid(Vector2Int gridPostion) {
+
+        //Debug.Log(Screen.width);
+        //Debug.Log(Internals.standardCanvasSize.x);
 
         // Get the scaler to scale properly according to the current resolution
         float scalerX = Screen.width / Internals.standardCanvasSize.x;

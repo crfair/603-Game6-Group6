@@ -10,6 +10,8 @@ public class PuzzleCanvas : MonoBehaviour
     public GameObject testObject;
     public GameObject specialBlockPrefab;
     public GameObject placeHolderBlockPrefab;
+    public GameObject puzzle1Canvas;
+    public GameObject puzzle2Canvas;
     public Vector2Int[] fixedBlockPositions;
     public Vector2Int[] specialBlockPositions;
 
@@ -78,6 +80,7 @@ public class PuzzleCanvas : MonoBehaviour
         setEmptyMap(Internals.gridDimension.x, Internals.gridDimension.y);
         GenerateBlocks(fixedBlockPositions, placeHolderBlockPrefab, fixedBlocks);
         GenerateBlocks(specialBlockPositions, specialBlockPrefab, specialBlocks);
+        // gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -126,6 +129,15 @@ public class PuzzleCanvas : MonoBehaviour
             WriteStatisticData();
             Delegate?.PuzzleCanvasDidPassVerification();
             Debug.Log("Found");
+            //puzzle1Canvas.gameObject.SetActive(false);
+            //puzzle2Canvas.gameObject.SetActive(true);
+            //gameObject.SetActive(false);
+
+            if (gameObject == puzzle1Canvas)
+            {
+                puzzle2Canvas.SetActive(true);
+            }
+            gameObject.SetActive(false);
         }
         else
         {
