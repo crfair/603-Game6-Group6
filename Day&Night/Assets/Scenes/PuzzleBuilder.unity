@@ -283,6 +283,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puzzle3
       objectReference: {fileID: 0}
+    - target: {fileID: 6352332476016444656, guid: 0d6a4f61d8aff4d77b29601bc89367fa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6352332476016444667, guid: 0d6a4f61d8aff4d77b29601bc89367fa, type: 3}
       propertyPath: fixedBlockPositions.Array.size
       value: 10

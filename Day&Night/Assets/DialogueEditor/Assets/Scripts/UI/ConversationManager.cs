@@ -264,6 +264,10 @@ namespace DialogueEditor
             return value;
         }
 
+        public void SetScrollSpeed(float speed)
+        {
+            ScrollSpeed = speed;
+        }
 
         //--------------------------------------
         // Set state

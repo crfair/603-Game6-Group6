@@ -15,6 +15,7 @@ public class PuzzleCanvas : MonoBehaviour
     public Vector2Int[] fixedBlockPositions;
     public Vector2Int[] specialBlockPositions;
 
+    [SerializeField]
     public PuzzleCanvasDelegate Delegate;
     public string puzzleTitle = "Untitled";
 
