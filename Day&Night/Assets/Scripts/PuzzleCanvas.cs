@@ -6,6 +6,7 @@ using System.IO;
 
 public class PuzzleCanvas : MonoBehaviour
 {
+    public TMPro.TMP_Text indicator;
 
     public GameObject testObject;
     public GameObject specialBlockPrefab;
@@ -157,13 +158,30 @@ public class PuzzleCanvas : MonoBehaviour
 
         // Check if the position is out of bounds
         if (position.x < 0 || position.y < 0) {
+            PlacementNotAllowed();
             return false;
         }
         if (position.x >= gridDimension.x || position.y >= gridDimension.y) {
+            PlacementNotAllowed();
             return false;
         }
 
-        return savedMap[position.x, position.y] == 0;
+        bool result = savedMap[position.x, position.y] == 0;
+        if (!result) {
+            PlacementNotAllowed();
+        }
+        return result;
+    }
+
+    public void PlacementNotAllowed() {
+        indicator.text = "Overlapped with something else!";
+        StartCoroutine(DisableText());
+    }
+
+       IEnumerator DisableText()
+    {
+        yield return new WaitForSeconds(2);
+        indicator.text = "";
     }
 
     /// <summary>
@@ -229,6 +247,7 @@ public class PuzzleCanvas : MonoBehaviour
             singleBlock.transform.SetParent(transform);
             // Change the position and the scale
             singleBlock.transform.position = canvasPosition;
+            singleBlock.transform.SetSiblingIndex(1);
             singleBlock.transform.localScale = new Vector3(1, 1, 1);
             singleBlock.GetComponent<Blocks>().gridPosition = position;
 
