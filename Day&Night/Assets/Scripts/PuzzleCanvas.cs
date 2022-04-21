@@ -136,7 +136,7 @@ public class PuzzleCanvas : MonoBehaviour
 
             if (gameObject == puzzle1Canvas)
             {
-                puzzle2Canvas.SetActive(true);
+                puzzle2Canvas?.SetActive(true);
             }
             gameObject.SetActive(false);
         }
