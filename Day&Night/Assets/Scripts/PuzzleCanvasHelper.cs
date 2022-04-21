@@ -79,6 +79,7 @@ public class PuzzleCanvasHelper : MonoBehaviour
 }
 
 public static class Internals {
+    public static string transitionName;
     public static bool startMovingPieces = false; // To check if the user is moving the pieces
     public static Vector2Int gridDimension; // The size of the grid
     public static Vector2 gridInitPosition; // The bottom left corner position of the grid in canvas system

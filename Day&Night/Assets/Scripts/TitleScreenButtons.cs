@@ -7,10 +7,18 @@ public class TitleScreenButtons : MonoBehaviour
 
     public GameObject optionImage;
     public GameObject creditImage;
+
+    [SerializeField]
+    float transtionTime = 1f;
+    [SerializeField]
+    string transtionAnimationName = "Window";
+    [SerializeField]
+    Animator transitionAnimator = null;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        transitionAnimator?.SetTrigger("CrossFade_End");
     }
 
     // Update is called once per frame
@@ -19,8 +27,16 @@ public class TitleScreenButtons : MonoBehaviour
         
     }
 
-    public void BtnStartClicked() {
+    IEnumerator StartLoadingGame() {
+        Internals.transitionName = transtionAnimationName;
+        transitionAnimator?.SetTrigger(transtionAnimationName + "_Start");
+        yield return new WaitForSeconds(transtionTime);
         SceneManager.LoadScene("SampleScene");
+    }
+
+    public void BtnStartClicked() {
+        StartCoroutine(StartLoadingGame());
+        
     }
     public void BtnOptionClicked()
     {
