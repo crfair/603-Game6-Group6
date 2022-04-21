@@ -2871,6 +2871,10 @@ PrefabInstance:
       propertyPath: standardCanvasSize.y
       value: 1080
       objectReference: {fileID: 0}
+    - target: {fileID: 2689732993155367389, guid: e4e658b681d79471892aa5d186f45bd7, type: 3}
+      propertyPath: m_SortingOrder
+      value: 99
+      objectReference: {fileID: 0}
     - target: {fileID: 2689732993155367390, guid: e4e658b681d79471892aa5d186f45bd7, type: 3}
       propertyPath: m_Name
       value: Pause
