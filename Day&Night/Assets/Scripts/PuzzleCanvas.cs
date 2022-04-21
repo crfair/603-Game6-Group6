@@ -61,8 +61,17 @@ public class PuzzleCanvas : MonoBehaviour
   ""puzzleTitle"":""{puzzleTitle}"",
   ""timeSpentInSeconds"":""{seconds}"",
   ""puzzleMap"":""
-{GenerateMapString()}""
-}}";
+{GenerateMapString()}""";
+        var pieces = GetComponentsInChildren<Pieces>();
+        foreach (Pieces piece in pieces) {
+            text += "\n\"piecePlacedPositions\":\"";
+            foreach (var position in piece.placedPositions) {
+                text += $"({position.x},{position.y});";
+            }
+            text += "\"";
+        }
+
+        text += "\n}";
         DateTime dt = DateTime.Now;
         long unixTime = ((DateTimeOffset)dt).ToUnixTimeSeconds();
         Debug.Log(Application.dataPath);
@@ -82,6 +91,7 @@ public class PuzzleCanvas : MonoBehaviour
         setEmptyMap(Internals.gridDimension.x, Internals.gridDimension.y);
         GenerateBlocks(fixedBlockPositions, placeHolderBlockPrefab, fixedBlocks);
         GenerateBlocks(specialBlockPositions, specialBlockPrefab, specialBlocks);
+        StartPuzzleTimer();
         // gameObject.SetActive(false);
     }
 

@@ -80,6 +80,7 @@ public class Pieces : MonoBehaviour
 
     public Texture2D cursorTexture;
 
+    private bool allowRotation = true;
     public RotationStatus rotationStatus = RotationStatus.Normal;
     [SerializeField]
     int pieces; // The number of blocks in single piece
@@ -93,12 +94,12 @@ public class Pieces : MonoBehaviour
     // The canvas attached
     public PuzzleCanvas puzzleCanvas;
     // The current position of the piece
-    private List<Vector2Int> placedPositions = new List<Vector2Int>();
-    private bool allowRotation = true;
+    public List<Vector2Int> placedPositions = new List<Vector2Int>();
 
     // The initial position in the canvas
     private Vector2 originalPosition;
 
+    
     /// <summary>
     /// Deregister the piece from the grid map
     /// </summary>

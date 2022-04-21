@@ -5,6 +5,7 @@ using TMPro;
 
 public class CheckButton : MonoBehaviour
 {
+    public Texture2D cursorTexture;
 
     public PuzzleCanvas puzzleCanvas;
 
@@ -36,5 +37,13 @@ public class CheckButton : MonoBehaviour
             indicatorText.text = "Not Connected";
             StartCoroutine(DisableText());
         }
+    }
+    public void PointerEnter()
+    {
+        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
+    }
+    public void PointerExit()
+    {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
 }
