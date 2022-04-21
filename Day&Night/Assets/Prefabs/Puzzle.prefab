@@ -48,10 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b50170dac5d1a4dfd8591e52d24803a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridDimension: {x: 10, y: 10}
-  gridInitPosition: {x: 256, y: 216}
-  standardCanvasSize: {x: 1920, y: 1080}
-  singleGridSize: 64
 --- !u!1 &6352332476004777130
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,8 +136,9 @@ GameObject:
   - component: {fileID: 6352332476016444670}
   - component: {fileID: 6352332476016444671}
   - component: {fileID: 6352332476016444667}
+  - component: {fileID: 5686585289613747514}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Puzzle
   m_TagString: PuzzleCanvasGrid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -248,12 +245,34 @@ MonoBehaviour:
   testObject: {fileID: 3843882746016122757, guid: 85d90d2349be2420db166155e9daf38a, type: 3}
   specialBlockPrefab: {fileID: 3843882746016122757, guid: 85d90d2349be2420db166155e9daf38a, type: 3}
   placeHolderBlockPrefab: {fileID: 3843882746016122757, guid: ff146c7a827264e04ab5d17d142fda94, type: 3}
+  puzzle1Canvas: {fileID: 0}
+  puzzle2Canvas: {fileID: 0}
   fixedBlockPositions:
   - {x: 0, y: 1}
   - {x: 4, y: 4}
   specialBlockPositions:
   - {x: 0, y: 0}
   - {x: 2, y: 2}
+  puzzleTitle: Untitled
+--- !u!95 &5686585289613747514
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6352332476016444656}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 710504f669e304f649b8e327af125280, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6352332476370702043
 GameObject:
   m_ObjectHideFlags: 0

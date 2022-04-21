@@ -1,9 +1,11 @@
 using DialogueEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class NPCManager : MonoBehaviour
 {
+    private TMP_Text tmpText;
     private Text text;
     [SerializeField]
     private NPCConversation dialogue;
@@ -17,6 +19,8 @@ public class NPCManager : MonoBehaviour
         text.enabled = false;
         playerNearby = false;
         playerMovement = GameObject.Find("PlayerCharacter").GetComponent<PlayerController>();
+
+        tmpText = GetComponentInChildren<TMP_Text>();
     }
 
     private void Update()
@@ -44,6 +48,8 @@ public class NPCManager : MonoBehaviour
         {
             text.enabled = true;
             playerNearby = true;
+
+            
         }
     }
 
