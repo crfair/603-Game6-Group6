@@ -312,6 +312,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionImage: {fileID: 406615625}
   creditImage: {fileID: 590093953}
+  transtionTime: 1
+  transtionAnimationName: Window
+  transitionAnimator: {fileID: 841606180}
 --- !u!1 &300076882
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,6 +974,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658135076}
   m_CullTransparentMesh: 1
+--- !u!95 &841606180 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1823253130355176783, guid: fe79880c58a5849cc87c7ac7f1f3554e, type: 3}
+  m_PrefabInstance: {fileID: 1684929188}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &864447822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,6 +1996,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 163551119332612467, guid: fe79880c58a5849cc87c7ac7f1f3554e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4431911109050609512, guid: fe79880c58a5849cc87c7ac7f1f3554e, type: 3}
       propertyPath: m_Name
       value: TransitionController
@@ -2035,6 +2047,14 @@ PrefabInstance:
     - target: {fileID: 4431911109050609515, guid: fe79880c58a5849cc87c7ac7f1f3554e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431911109056827864, guid: fe79880c58a5849cc87c7ac7f1f3554e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6591118341638228706, guid: fe79880c58a5849cc87c7ac7f1f3554e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe79880c58a5849cc87c7ac7f1f3554e, type: 3}

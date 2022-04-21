@@ -13,6 +13,13 @@ public class PauseScreenController : MonoBehaviour
     public Vector2 standardCanvasSize;
     public float singleGridSize;
 
+    [SerializeField]
+    float transtionTime = 1f;
+    [SerializeField]
+    string transtionAnimationName = "Window";
+    [SerializeField]
+    Animator transitionAnimator = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +27,14 @@ public class PauseScreenController : MonoBehaviour
         Internals.gridInitPosition = gridInitPosition;
         Internals.standardCanvasSize = standardCanvasSize;
         Internals.singleGridSize = singleGridSize;
+    }
+
+    IEnumerator StartLoadingTitleScreen()
+    {
+        Internals.transitionName = transtionAnimationName;
+        transitionAnimator?.SetTrigger(transtionAnimationName + "_Start");
+        yield return new WaitForSeconds(transtionTime);
+        SceneManager.LoadScene("TitleScreen");
     }
 
     // Update is called once per frame
@@ -31,7 +46,8 @@ public class PauseScreenController : MonoBehaviour
     }
 
     public void btnYesClicked() {
-        SceneManager.LoadScene("TitleScreen");
+        StartCoroutine(StartLoadingTitleScreen());
+        //SceneManager.LoadScene("TitleScreen");
     }
     public void btnNoClicked() {
         pauseCanvas.SetActive(!pauseCanvas.activeSelf);
