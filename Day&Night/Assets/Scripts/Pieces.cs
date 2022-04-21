@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
 // Rotation types
 public enum RotationStatus {
     Normal,
@@ -76,6 +77,8 @@ static class Extension
 
 public class Pieces : MonoBehaviour
 {
+
+    public Texture2D cursorTexture;
 
     public RotationStatus rotationStatus = RotationStatus.Normal;
     [SerializeField]
@@ -224,4 +227,11 @@ public class Pieces : MonoBehaviour
     //{
     //    throw new NotImplementedException();
     //}
+
+    public void PointerEnter() {
+        Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
+    }
+    public void PointerExit() {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+    }
 }

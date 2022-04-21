@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dddd06e701c124671aee49b0945b7da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: a1c7d325d756c4a72b5ba6eec529b5ed, type: 3}
   rotationStatus: 0
   pieces: 4
   piecesBlocks:
@@ -109,6 +110,7 @@ MonoBehaviour:
   - {x: 0, y: 1}
   - {x: 0, y: -1}
   - {x: 1, y: 1}
+  puzzleCanvas: {fileID: 0}
 --- !u!61 &5450478833096717401
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -155,6 +157,38 @@ MonoBehaviour:
         - m_Target: {fileID: 5450478833096717402}
           m_TargetAssemblyTypeName: Pieces, Assembly-CSharp
           m_MethodName: piecesClicked
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5450478833096717402}
+          m_TargetAssemblyTypeName: Pieces, Assembly-CSharp
+          m_MethodName: PointerEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5450478833096717402}
+          m_TargetAssemblyTypeName: Pieces, Assembly-CSharp
+          m_MethodName: PointerExit
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
