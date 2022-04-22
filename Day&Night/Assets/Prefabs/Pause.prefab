@@ -265,6 +265,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseCanvas: {fileID: 2689732994918885096}
+  gridDimension: {x: 0, y: 0}
+  gridInitPosition: {x: 0, y: 0}
+  standardCanvasSize: {x: 0, y: 0}
+  singleGridSize: 0
+  transtionTime: 1
+  transtionAnimationName: Window
+  transitionAnimator: {fileID: 0}
 --- !u!1 &2689732993782721403
 GameObject:
   m_ObjectHideFlags: 0
@@ -985,7 +992,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2689732994918885097
 RectTransform:
   m_ObjectHideFlags: 0
