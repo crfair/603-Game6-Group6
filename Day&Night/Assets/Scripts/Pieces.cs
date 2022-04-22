@@ -170,7 +170,7 @@ public class Pieces : MonoBehaviour
             }
             else {
                 Debug.Log("Not Allowed");
-                
+                GetComponent<Animator>().Play("PiecePlacementNotAllowed");
             }
         }
         allowRotation = true;
