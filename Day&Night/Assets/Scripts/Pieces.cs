@@ -130,6 +130,8 @@ public class Pieces : MonoBehaviour
             return;
         }
 
+        
+
         // disable rotation during the placement process
         // this is set to avoid multithreading problem
         // e.g placing the object and rotating the piece at the same time
@@ -141,6 +143,7 @@ public class Pieces : MonoBehaviour
             clearMap();
             startMovingPiece = true;
             Internals.startMovingPieces = true;
+            GetComponent<Animator>().Play("PiecesSelectedAnimation");
         }
         // The player tries to set the piece
         else {
@@ -153,6 +156,7 @@ public class Pieces : MonoBehaviour
             }
             if (allowPlacement)
             {
+                GetComponent<Animator>().Play("PiecesSelectedAnimation");
                 // The grid is ok to set the piece
                 startMovingPiece = false;
                 Internals.startMovingPieces = false;
