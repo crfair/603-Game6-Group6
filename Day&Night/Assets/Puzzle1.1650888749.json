@@ -1,0 +1,21 @@
+
+{
+  "puzzleTitle":"Puzzle1",
+  "timeSpentInSeconds":"333.300653",
+  "puzzleMap":"
+oooooooooo
+oooooooooo
+xxoooooooo
+xxoooooooo
+oxoooooooo
+oxoooooooo
+oxoooooxxx
+oxooooooox
+oxxxxxoooo
+oxoooxoooo
+"
+"piecePlacedPositions":"(1,6);(0,6);(1,7);(1,5);"
+"piecePlacedPositions":"(8,3);(7,3);(9,3);(9,2);"
+"piecePlacedPositions":"(3,1);(2,1);(4,1);(5,1);"
+"piecePlacedPositions":"(1,3);(1,4);(1,2);(1,1);"
+}
