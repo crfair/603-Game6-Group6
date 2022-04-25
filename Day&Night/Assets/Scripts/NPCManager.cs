@@ -9,9 +9,12 @@ public class NPCManager : MonoBehaviour
     private Text text;
     [SerializeField]
     private NPCConversation dialogue;
+    [SerializeField]
+    private NPCConversation bark;
 
     private bool playerNearby;
     private PlayerController playerMovement;
+    private bool puzzleCompleted;
 
     private void Start()
     {
@@ -27,7 +30,10 @@ public class NPCManager : MonoBehaviour
     {
         if (playerNearby && Input.GetKeyDown(KeyCode.E))
         {
-            ConversationManager.Instance.StartConversation(dialogue);
+            if (!puzzleCompleted)
+                ConversationManager.Instance.StartConversation(dialogue);
+            else
+                ConversationManager.Instance.StartConversation(bark);
             ConversationManager.OnConversationEnded += DialogueEnded;
             playerMovement.enabled = false;
             playerNearby = false;
@@ -38,8 +44,8 @@ public class NPCManager : MonoBehaviour
     {
         playerMovement.enabled = true;
         ConversationManager.OnConversationEnded -= DialogueEnded;
-        gameObject.transform.Find("Canvas").gameObject.SetActive(false);
-        enabled = false;
+        //gameObject.transform.Find("Canvas").gameObject.SetActive(false);
+        //enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -47,9 +53,7 @@ public class NPCManager : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             text.enabled = true;
-            playerNearby = true;
-
-            
+            playerNearby = true;            
         }
     }
 
@@ -62,5 +66,10 @@ public class NPCManager : MonoBehaviour
     public void SetColor(bool color)
     {
         gameObject.GetComponent<Animator>().SetBool("PuzzleComplete", color);
+    }
+
+    public void SetPuzzleCompleted(bool completed)
+    {
+        puzzleCompleted = completed;
     }
 }
