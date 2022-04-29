@@ -1,0 +1,23 @@
+
+{
+  "puzzleTitle":"Puzzle5",
+  "timeSpentInSeconds":"13.0952677",
+  "puzzleMap":"
+xxxxxooooo
+oooxxooooo
+ooooxooooo
+ooooxxxxxx
+ooooxooooo
+oooxxxoooo
+ooooxxoooo
+ooooxooooo
+oooxxoxoxx
+oooxxxxxxx
+"
+"piecePlacedPositions":"(3,9);(2,9);(4,9);(3,8);"
+"piecePlacedPositions":"(4,4);(3,4);(5,4);(5,3);"
+"piecePlacedPositions":"(7,0);(8,0);(6,0);(6,1);"
+"piecePlacedPositions":""
+"piecePlacedPositions":"(4,0);(5,0);(3,0);(3,1);"
+"piecePlacedPositions":"(6,6);(5,6);(7,6);(8,6);"
+}
